@@ -1,5 +1,7 @@
+import { publicAsset } from "@/constant/APP"
+
 const createClusterImages = (clusterId: string, imagePaths: string[]) =>
-  imagePaths.map(imagePath => `/assets/dashboard/clusters/${clusterId}/${imagePath}`)
+  imagePaths.map((imagePath) => publicAsset(`assets/dashboard/clusters/${clusterId}/${imagePath}`))
 
 const shuffleImages = (images: string[]) => {
   const shuffled = [...images]

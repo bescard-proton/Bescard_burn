@@ -188,9 +188,9 @@
   border-radius: 8px;
   min-width: 100px;
   background:
-    url("/assets/card/dashboard/pattern.svg") no-repeat top 6px right 6px / 8px 8px,
-    url("/assets/card/dashboard/pattern.svg") no-repeat bottom 6px right 6px / 8px 8px,
-    url("/assets/card/dashboard/pattern.svg") no-repeat left 6px bottom 6px / 8px 8px,
+    url("../../public/assets/card/dashboard/pattern.svg") no-repeat top 6px right 6px / 8px 8px,
+    url("../../public/assets/card/dashboard/pattern.svg") no-repeat bottom 6px right 6px / 8px 8px,
+    url("../../public/assets/card/dashboard/pattern.svg") no-repeat left 6px bottom 6px / 8px 8px,
     #404040;
 }
 
@@ -223,19 +223,19 @@
 }
 
 .legend {
-  background: url("/assets/card/dashboard/laser.legend.svg") no-repeat 0 0/100% 100%, #1a1a1a;
+  background: url("../../public/assets/card/dashboard/laser.legend.svg") no-repeat 0 0/100% 100%, #1a1a1a;
 }
 
 .epic {
-  background: url("/assets/card/dashboard/laser.epic.svg") no-repeat 0 0/100% 100%, #1a1a1a;
+  background: url("../../public/assets/card/dashboard/laser.epic.svg") no-repeat 0 0/100% 100%, #1a1a1a;
 }
 
 .rare {
-  background: url("/assets/card/dashboard/laser.rare.svg") no-repeat 0 0/100% 100%, #1a1a1a;
+  background: url("../../public/assets/card/dashboard/laser.rare.svg") no-repeat 0 0/100% 100%, #1a1a1a;
 }
 
 .common {
-  background: url("/assets/card/dashboard/laser.common.svg") no-repeat 0 0/100% 100%, #1a1a1a;
+  background: url("../../public/assets/card/dashboard/laser.common.svg") no-repeat 0 0/100% 100%, #1a1a1a;
 }
 
 .unget .dobCoverInner > img {
