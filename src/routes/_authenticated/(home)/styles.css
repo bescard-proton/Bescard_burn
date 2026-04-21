@@ -1,0 +1,862 @@
+.redeem-modal .ant-modal-container {
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+.redeem-modal .ant-modal-content {
+  padding: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+.redeem-modal .ant-modal-close {
+  display: none;
+}
+
+.redeem-modal .ant-modal-body {
+  padding: 0 !important;
+}
+
+.spore-preview-fallback {
+  width: 100%;
+  height: 100%;
+  min-height: 100%;
+  display: grid;
+  align-content: center;
+  justify-items: center;
+  gap: 10px;
+  padding: 18px;
+  background:
+    linear-gradient(180deg, rgba(255, 219, 17, 0.08), rgba(255, 255, 255, 0)),
+    #f4f4f4;
+  color: #1a1a1a;
+  text-align: center;
+}
+
+.spore-preview-fallback-title {
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.mintpad-rounded-shell {
+  position: relative;
+}
+
+.mintpad-rounded-close {
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: 3;
+  width: 48px;
+  height: 48px;
+  padding: 0 !important;
+  border-radius: 50%;
+  border: 8px solid #1a1a1a !important;
+  background-color: #fff !important;
+  box-shadow: none !important;
+  cursor: pointer;
+}
+
+.mintpad-rounded-close.ant-btn:not(:disabled):not(.ant-btn-disabled):hover,
+.mintpad-rounded-close:hover {
+  background-color: #1a1a1a !important;
+  border-color: #1a1a1a !important;
+}
+
+.mintpad-rounded-close:hover::before,
+.mintpad-rounded-close:hover::after {
+  background-color: #fff;
+}
+
+.mintpad-rounded-close::before,
+.mintpad-rounded-close::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  width: 20px;
+  height: 5px;
+  border-radius: 5px;
+  background-color: #1a1a1a;
+}
+
+.mintpad-rounded-close::before {
+  transform: rotate(45deg);
+}
+
+.mintpad-rounded-close::after {
+  transform: rotate(-45deg);
+}
+
+.mintpad-rounded-head {
+  position: absolute;
+  z-index: 1;
+  width: 100%;
+  height: 100px;
+}
+
+.mintpad-rounded-head svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.mintpad-rounded-body-bg {
+  position: absolute;
+  top: 100px;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
+  border: 8px solid #1a1a1a;
+  border-top: 0;
+  border-radius: 0 0 30px 30px;
+  background-color: #fff;
+}
+
+.mintpad-rounded-body {
+  position: relative;
+  z-index: 2;
+  padding: 8px;
+}
+
+.mintpad-copy-content-wrap {
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.mintpad-copy-title {
+  align-self: flex-start;
+  margin: 0;
+  color: #1a1a1a;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 28px;
+}
+
+.mintpad-copy-dob-wrap {
+  width: 430px;
+  margin-top: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.mintpad-copy-card {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  padding: 16px;
+  border: 4px solid #1a1a1a;
+  border-radius: 16px;
+  background: #fff;
+}
+
+.mintpad-copy-icon {
+  position: relative;
+  z-index: 2;
+  width: 40px;
+  height: 40px;
+  margin: -22px 0;
+}
+
+.mintpad-copy-dob-info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.mintpad-copy-dob-cover,
+.mintpad-copy-dob-cover.spore-preview-fallback {
+  width: 68px;
+  height: 91px;
+  border-radius: 6px;
+  flex: none;
+}
+
+.mintpad-copy-dob-cover {
+  object-fit: contain;
+  object-position: center;
+  background: #fff;
+}
+
+.mintpad-copy-dob-cover.spore-preview-fallback {
+  padding: 8px;
+  background: #f5f5f5;
+}
+
+.mintpad-copy-dob-cover.spore-preview-fallback .spore-preview-fallback-title {
+  font-size: 11px;
+  line-height: 1.2;
+  text-align: center;
+  word-break: normal;
+  overflow-wrap: normal;
+}
+
+.mintpad-copy-info-content-wrap {
+  flex: 1;
+  height: 91px;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.mintpad-copy-info-content-wrap--single {
+  justify-content: center;
+}
+
+.mintpad-copy-item {
+  display: flex;
+  align-items: center;
+  min-width: 0;
+}
+
+.mintpad-copy-event-name {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: #333;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 22px;
+}
+
+.mintpad-copy-stored-value-row {
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 16px;
+}
+
+.mintpad-copy-stored-value-label {
+  color: #666;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+}
+
+.mintpad-copy-stored-value {
+  display: inline-flex;
+  align-items: baseline;
+  color: #1a1a1a;
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 28px;
+  text-align: right;
+}
+
+.mintpad-copy-receive-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.mintpad-copy-box {
+  width: 100%;
+  padding: 0 12px;
+  border: 1px solid #1a1a1a;
+  border-radius: 8px;
+  background: #f5f5f5;
+}
+
+.mintpad-copy-box--spaced {
+  margin-top: 10px;
+}
+
+.mintpad-copy-box-title {
+  margin: 0;
+  padding: 8px 0;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  border-bottom: 1px dashed #1a1a1a;
+  color: #1a1a1a;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 24px;
+}
+
+.mintpad-copy-box-tokens {
+  padding: 12px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.mintpad-copy-box-token {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.mintpad-copy-box-asset {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+}
+
+.mintpad-copy-box-name {
+  flex: 1;
+  color: #1a1a1a;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 24px;
+}
+
+.mintpad-copy-box-name-remark {
+  margin-left: 6px;
+  color: #999;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 20px;
+}
+
+.mintpad-copy-asset-icon {
+  width: 34px;
+  height: 34px;
+}
+
+.mintpad-copy-receive-title {
+  margin: 8px 0 0;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #1a1a1a;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+}
+
+.mintpad-copy-release-ckb {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.mintpad-copy-release-list {
+  margin-top: 8px;
+  display: grid;
+  gap: 8px;
+}
+
+.mintpad-copy-release-list .mintpad-copy-release-ckb {
+  margin-top: 0;
+}
+
+.mintpad-copy-chain-icon {
+  width: 16px;
+  height: 16px;
+}
+
+.mintpad-copy-release-price {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 1px;
+  color: #1a1a1a;
+  font-family: var(--font-display);
+  font-weight: 700;
+}
+
+.mintpad-copy-release-integer {
+  font-size: 1.5rem;
+  line-height: 1.2;
+}
+
+.mintpad-copy-release-decimal {
+  font-size: 1rem;
+  line-height: 1.2;
+}
+
+.mintpad-copy-release-unit {
+  color: #999;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+.mintpad-copy-release-empty {
+  margin: 8px 0 0;
+  color: #666;
+  font-size: 14px;
+  line-height: 20px;
+  text-align: center;
+}
+
+.mintpad-copy-release-empty--error {
+  color: #b42318;
+}
+
+.mintpad-copy-warning {
+  display: inline-flex;
+  align-items: flex-start;
+  gap: 4px;
+  flex-shrink: 0;
+  padding: 4px 8px;
+  border-radius: 4px;
+  background: rgba(255, 81, 81, 0.1);
+  color: #ff5151;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 20px;
+}
+
+.mintpad-copy-warning img {
+  width: 16px;
+  height: 16px;
+  margin-top: 2px;
+}
+
+.mintpad-copy-status {
+  margin: 0;
+  color: #666;
+  text-align: center;
+}
+
+.mintpad-copy-footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.mintpad-copy-melt-button.ant-btn {
+  width: 160px;
+  height: 56px;
+  padding: 0 24px !important;
+  border: 4px solid #1a1a1a !important;
+  border-radius: 20px !important;
+  background: #1a1a1a !important;
+  color: #fff !important;
+  box-shadow: none !important;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1;
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.mintpad-copy-melt-button.ant-btn:not(:disabled):not(.ant-btn-disabled):hover,
+.mintpad-copy-melt-button.ant-btn:not(:disabled):not(.ant-btn-disabled):focus {
+  background: #1a1a1a !important;
+  border-color: #1a1a1a !important;
+  color: #ffdb11 !important;
+  box-shadow: none !important;
+}
+
+.mintpad-copy-melt-button.ant-btn.ant-btn-loading,
+.mintpad-copy-melt-button.ant-btn:disabled,
+.mintpad-copy-melt-button.ant-btn.ant-btn-disabled {
+  border-color: #1a1a1a !important;
+  background: #1a1a1a !important;
+  color: #fff !important;
+  box-shadow: none !important;
+  opacity: 0.7;
+  cursor: wait;
+}
+
+.mintpad-copy-melt-button.ant-btn .ant-btn-loading-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-inline-end: 0;
+}
+
+.mintpad-copy-melt-button.ant-btn .ant-btn-loading-icon .anticon {
+  color: currentColor;
+  font-size: 18px;
+}
+
+.mintpad-testnet-tool-panel {
+  position: relative;
+  display: grid;
+  gap: 16px;
+  padding: 24px 24px 28px;
+  overflow: hidden;
+  border: 8px solid #1a1a1a;
+  border-radius: 24px;
+  background:
+    radial-gradient(circle at top right, rgba(255, 219, 17, 0.28), transparent 24%),
+    linear-gradient(180deg, #fffdf4 0%, #fff8dc 100%);
+  box-shadow: none;
+}
+
+.mintpad-testnet-tool-panel--modal {
+  margin: 0;
+}
+
+.mintpad-testnet-float.ant-float-btn {
+  right: 24px;
+  bottom: 24px;
+}
+
+.mintpad-testnet-float.ant-float-btn .ant-float-btn-body {
+  border: 4px solid #1a1a1a;
+  border-radius: 18px;
+  background: #1a1a1a;
+  box-shadow: none;
+}
+
+.mintpad-testnet-float.ant-float-btn .ant-float-btn-content {
+  color: #ffdb11;
+}
+
+.mintpad-testnet-float-mark {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  line-height: 1;
+}
+
+.mintpad-testnet-modal .ant-modal-content {
+  padding: 20px;
+  background: transparent;
+  box-shadow: none;
+}
+
+.mintpad-testnet-modal .ant-modal-close {
+  color: #1a1a1a;
+}
+
+.mintpad-testnet-tool-panel::before {
+  display: none;
+}
+
+.mintpad-testnet-tool-panel::after {
+  content: '';
+  position: absolute;
+  top: -5rem;
+  right: -4rem;
+  width: 14rem;
+  height: 14rem;
+  border-radius: 999px;
+  background: radial-gradient(circle, rgba(255, 219, 17, 0.2), transparent 68%);
+  pointer-events: none;
+}
+
+.mintpad-testnet-tool-head {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  gap: 10px;
+}
+
+.mintpad-testnet-tool-chip-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.mintpad-testnet-tool-chip {
+  display: inline-flex;
+  align-items: center;
+  min-height: 32px;
+  padding: 0 12px;
+  border: 2px solid #1a1a1a;
+  border-radius: 999px;
+  background: #ffdb11;
+  color: #1a1a1a;
+  font-family: var(--font-display);
+  font-size: 0.86rem;
+  line-height: 1;
+}
+
+.mintpad-testnet-tool-chip--soft {
+  background: #fff;
+}
+
+.mintpad-testnet-tool-title {
+  color: #1a1a1a;
+  font-size: clamp(2rem, 5vw, 2.6rem);
+}
+
+.mintpad-testnet-tool-description {
+  margin: 0;
+  color: #4f4f4f;
+  font-size: 0.98rem;
+  line-height: 1.45;
+}
+
+.mintpad-testnet-action-grid {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  gap: 14px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.mintpad-testnet-action-card.ant-btn {
+  height: auto;
+  padding: 0;
+  border: 4px solid #1a1a1a;
+  border-radius: 24px;
+  color: #1a1a1a;
+  box-shadow: none;
+  transition:
+    transform 180ms ease,
+    background 180ms ease;
+}
+
+.mintpad-testnet-action-card.ant-btn::after {
+  display: none;
+}
+
+.mintpad-testnet-action-card.ant-btn > span {
+  width: 100%;
+}
+
+.mintpad-testnet-action-card.ant-btn.ant-btn-text:not(:disabled):not(.ant-btn-disabled):hover {
+  border-color: #1a1a1a;
+  background: inherit;
+  color: #1a1a1a;
+}
+
+.mintpad-testnet-action-card.ant-btn:not(:disabled):not(.ant-btn-disabled):hover {
+  transform: translateY(-3px);
+}
+
+.mintpad-testnet-action-card--ckb {
+  background: linear-gradient(180deg, #ffe777 0%, #ffd93a 100%);
+}
+
+.mintpad-testnet-action-card--usdi {
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.88), rgba(255, 255, 255, 0.96)),
+    #fff;
+}
+
+.mintpad-testnet-action-body {
+  width: 100%;
+  display: grid;
+  align-items: center;
+  gap: 14px;
+  padding: 18px 20px;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  text-align: left;
+}
+
+.mintpad-testnet-action-mark {
+  min-width: 56px;
+  min-height: 56px;
+  display: grid;
+  place-items: center;
+  padding: 0 12px;
+  border: 3px solid #1a1a1a;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.72);
+  font-family: var(--font-display);
+  font-size: 1rem;
+  line-height: 1;
+}
+
+.mintpad-testnet-action-copy {
+  min-width: 0;
+}
+
+.mintpad-testnet-action-copy strong {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: #1a1a1a;
+  font-size: 1.45rem;
+  line-height: 1.1;
+}
+
+.mintpad-testnet-action-value {
+  min-width: 92px;
+  color: #1a1a1a;
+  text-align: right;
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  line-height: 1;
+}
+
+.mintpad-testnet-status {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+  border: 3px solid #1a1a1a;
+  border-radius: 18px;
+  background: #fff;
+}
+
+.mintpad-testnet-status--success {
+  background: #fff4b8;
+}
+
+.mintpad-testnet-status--error {
+  background: #fff0f0;
+}
+
+.mintpad-testnet-status-dot {
+  width: 12px;
+  height: 12px;
+  flex: none;
+  border: 3px solid #1a1a1a;
+  border-radius: 999px;
+  background: #ffdb11;
+}
+
+.mintpad-testnet-status--success .mintpad-testnet-status-dot {
+  background: #1a1a1a;
+}
+
+.mintpad-testnet-status--error .mintpad-testnet-status-dot {
+  background: #ff5151;
+}
+
+.mintpad-testnet-status-text {
+  min-width: 0;
+  color: #1a1a1a;
+  font-size: 0.98rem;
+  line-height: 1.4;
+}
+
+.mintpad-testnet-result-shell {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  gap: 12px;
+}
+
+.mintpad-testnet-result-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.mintpad-testnet-result-pill {
+  display: inline-flex;
+  align-items: center;
+  min-height: 36px;
+  padding: 0 14px;
+  border: 2px solid #1a1a1a;
+  border-radius: 999px;
+  background: #1a1a1a;
+  color: #fff;
+  font-family: var(--font-display);
+  white-space: nowrap;
+}
+
+.mintpad-testnet-result-list {
+  display: grid;
+  gap: 10px;
+  margin: 0;
+}
+
+.mintpad-testnet-result-row {
+  display: grid;
+  gap: 6px;
+  padding: 14px 16px;
+  border: 2px solid #1a1a1a;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.72);
+}
+
+.mintpad-testnet-result-row dt {
+  color: #8a8a8a;
+  font-size: 0.74rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.mintpad-testnet-result-row dd {
+  margin: 0;
+  color: #1a1a1a;
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  line-height: 1.5;
+  word-break: break-all;
+}
+
+.mintpad-testnet-modal-action.ant-btn {
+  min-width: 136px;
+  height: 42px;
+  padding: 0 18px;
+  border: 3px solid #1a1a1a;
+  border-radius: 999px;
+  background: #1a1a1a;
+  color: #fff;
+  box-shadow: none;
+  font-weight: 700;
+}
+
+.mintpad-testnet-modal-action.ant-btn:not(:disabled):not(.ant-btn-disabled):hover {
+  border-color: #1a1a1a;
+  background: #1a1a1a;
+  color: #ffdb11;
+}
+
+@media (max-width: 720px) {
+  .mintpad-testnet-action-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .mintpad-testnet-action-body {
+    grid-template-columns: auto 1fr;
+  }
+
+  .mintpad-testnet-action-value {
+    grid-column: 2;
+    text-align: left;
+  }
+
+  .mintpad-testnet-result-head {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .mintpad-testnet-result-pill {
+    white-space: normal;
+  }
+
+  .mintpad-rounded-close {
+    width: 42px;
+    height: 42px;
+    border-width: 6px;
+  }
+
+  .mintpad-rounded-close::before,
+  .mintpad-rounded-close::after {
+    width: 16px;
+    height: 4px;
+  }
+
+  .mintpad-rounded-head {
+    height: 84px;
+  }
+
+  .mintpad-rounded-body-bg {
+    top: 84px;
+    border-width: 6px;
+    border-radius: 0 0 24px 24px;
+  }
+
+  .mintpad-copy-content-wrap {
+    padding: 24px 16px 20px;
+  }
+
+  .mintpad-copy-dob-wrap {
+    width: 100%;
+  }
+}

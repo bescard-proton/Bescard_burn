@@ -1,0 +1,411 @@
+.listItem {
+  position: relative;
+  margin-top: 47px;
+}
+
+.listItemInner {
+  padding: 10px 20px 20px;
+}
+
+.cover {
+  position: absolute;
+  left: 40px;
+  top: -26px;
+  width: 92px;
+  height: 120px;
+  border-radius: 8px;
+  background-color: #1a1a1a;
+  padding: 3px;
+}
+
+.cover img {
+  width: 100%;
+  height: 100%;
+  border-radius: 4px;
+  object-fit: cover;
+}
+
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 0 12px 0 122px;
+}
+
+.itemName {
+  font-family: var(--font-righteous);
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 32px;
+  color: #fff;
+}
+
+.clusterLink {
+  margin-top: 4px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 7px;
+  color: #999;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 18px;
+}
+
+.clusterLinkInner {
+  display: flex;
+  flex-direction: row;
+  gap: 7px;
+  color: inherit;
+  text-decoration: none;
+}
+
+.clusterLinkEnable {
+  cursor: pointer;
+}
+
+.clusterLinkEnable:hover,
+.clusterLinkEnable:hover .clusterLinkInner {
+  color: var(--app-color-primary);
+}
+
+.promoter {
+  margin-top: 4px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #999;
+  font-weight: 500;
+  font-size: 16px;
+}
+
+.promoter img {
+  width: 20px;
+  height: 20px;
+  border-radius: 20px;
+  overflow: hidden;
+  object-fit: cover;
+}
+
+.infos {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding-top: 34px;
+  gap: 40px;
+  color: #999;
+}
+
+.info {
+  position: relative;
+  padding-left: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  font-size: 14px;
+}
+
+.label {
+  color: #999;
+  text-align: right;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 18px;
+  margin-bottom: 4px;
+}
+
+.value {
+  position: relative;
+  height: 20px;
+  width: 20px;
+  text-align: right;
+}
+
+.valueInner {
+  position: absolute;
+  right: 0;
+  text-align: right;
+  white-space: nowrap;
+}
+
+.textWhite {
+  color: #fff;
+}
+
+.unit {
+  margin-left: 4px;
+}
+
+.ups {
+  color: #13d87c;
+}
+
+.downs {
+  color: #f44c2c;
+}
+
+.tier {
+  width: auto;
+  max-width: unset;
+  height: 20px;
+}
+
+.goDetail {
+  border-radius: 4px;
+  width: 24px;
+  height: 24px;
+  border: 1px solid rgba(216, 216, 216, 0.32);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  cursor: pointer;
+}
+
+.goDetail:hover {
+  background: #2a2a2a;
+}
+
+.dobGroups {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  column-gap: 12px;
+}
+
+.group {
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+  margin-top: 15px;
+  position: relative;
+  background-color: #404040;
+  height: 250px;
+  padding: 34px 12px 12px;
+  border-radius: 8px;
+  min-width: 100px;
+  background:
+    url("/assets/card/dashboard/pattern.svg") no-repeat top 6px right 6px / 8px 8px,
+    url("/assets/card/dashboard/pattern.svg") no-repeat bottom 6px right 6px / 8px 8px,
+    url("/assets/card/dashboard/pattern.svg") no-repeat left 6px bottom 6px / 8px 8px,
+    #404040;
+}
+
+.badge {
+  position: absolute;
+  top: 8px;
+  left: -4px;
+  width: 95px;
+  color: #000;
+  font-family: var(--font-squada-one);
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 18px;
+  padding-left: 16px;
+}
+
+.dob {
+  position: relative;
+  width: 124px;
+  min-height: 204px;
+  background: #1a1a1a;
+  border-radius: 8px;
+  overflow: hidden;
+  padding: 8px;
+}
+
+.dob:hover .dobCoverInner > img,
+.dob:focus-within .dobCoverInner > img {
+  transform: scale(1.1);
+}
+
+.legend {
+  background: url("/assets/card/dashboard/laser.legend.svg") no-repeat 0 0/100% 100%, #1a1a1a;
+}
+
+.epic {
+  background: url("/assets/card/dashboard/laser.epic.svg") no-repeat 0 0/100% 100%, #1a1a1a;
+}
+
+.rare {
+  background: url("/assets/card/dashboard/laser.rare.svg") no-repeat 0 0/100% 100%, #1a1a1a;
+}
+
+.common {
+  background: url("/assets/card/dashboard/laser.common.svg") no-repeat 0 0/100% 100%, #1a1a1a;
+}
+
+.unget .dobCoverInner > img {
+  filter: grayscale(1);
+}
+
+.dobCover {
+  position: relative;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.dobCoverInner > img {
+  width: 100%;
+  height: 100%;
+  transition: transform 0.2s linear;
+}
+
+.dobInfoRow {
+  margin-top: 6px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 6px;
+}
+
+.dobName {
+  flex: 1;
+  min-width: 0;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 16px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.dobAction {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 22px;
+  flex-shrink: 0;
+  cursor: pointer;
+  background-color: var(--app-color-primary) !important;
+  box-shadow: none !important;
+  color: #1a1a1a !important;
+}
+
+.dobAction:hover,
+.dobAction:focus-visible {
+  background-color: var(--app-color-primary) !important;
+  border-color: #000 !important;
+  color: #1a1a1a !important;
+}
+
+.dobAction > span:first-child {
+  font-family: var(--font-righteous);
+  text-align: center;
+  font-size: 12px !important;
+  font-weight: 400;
+  line-height: 1;
+}
+
+.promoterPlaceholder {
+  min-height: 20px;
+  visibility: hidden;
+}
+
+.infosPlaceholder {
+  visibility: hidden;
+}
+
+.outlink {
+  padding: 30px !important;
+}
+
+.outlinkHeader {
+  margin-bottom: 20px;
+  color: var(--app-color-black);
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 28px;
+}
+
+.outlinkMsg {
+  font-size: 18px;
+  color: #333;
+}
+
+.outlinkBtn {
+  margin-top: 24px;
+  font-size: 18px;
+  width: 100px;
+  height: 40px;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 30px;
+  border: 4px solid var(--app-color-black);
+  background-color: var(--app-color-black);
+  color: #fff;
+  font-family: var(--font-righteous);
+}
+
+.outlinkBtn:hover {
+  color: var(--app-color-primary);
+}
+
+@media (max-width: 1200px) {
+  .header {
+    flex-direction: column;
+  }
+
+  .infos {
+    padding-top: 12px;
+    flex-wrap: wrap;
+    gap: 18px;
+  }
+}
+
+@media (hover: none) {
+  .dobWithAction .dobAction {
+    bottom: 0;
+  }
+}
+
+@media (max-width: 900px) {
+  .listItemInner {
+    padding: 12px 12px 16px;
+  }
+
+  .cover {
+    left: 20px;
+  }
+
+  .header {
+    padding-left: 104px;
+  }
+}
+
+@media (max-width: 720px) {
+  .cover {
+    position: static;
+    width: 72px;
+    height: 94px;
+    margin-bottom: 12px;
+  }
+
+  .header {
+    padding: 0;
+  }
+
+  .itemName {
+    font-size: 20px;
+    line-height: 28px;
+  }
+
+  .infos {
+    gap: 16px;
+  }
+
+  .group {
+    height: auto;
+    flex-wrap: wrap;
+    padding-top: 40px;
+  }
+}

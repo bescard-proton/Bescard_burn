@@ -1,0 +1,28 @@
+@font-face {
+  font-family: "D-DIN Exp";
+  src: url("/assets/fonts/D-DINExp/D-DINExp.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "D-DIN Exp";
+  src: url("/assets/fonts/D-DINExp/D-DINExp-Bold.otf") format("opentype");
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "D-DIN Exp";
+  src: url("/assets/fonts/D-DINExp/D-DINExp-Italic.otf") format("opentype");
+  font-weight: 400;
+  font-style: italic;
+}
+
+:root {
+  --app-color-primary: #ffdb11;
+  --app-color-black: #1a1a1a;
+  --font-righteous: "Righteous", var(--font-display), "Avenir Next", sans-serif;
+  --font-squada-one: "Squada One", var(--font-display), "Avenir Next", sans-serif;
+  --font-d-din: "D-DIN Exp", var(--font-mono), monospace;
+}
