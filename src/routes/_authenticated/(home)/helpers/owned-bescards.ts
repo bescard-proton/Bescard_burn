@@ -276,7 +276,7 @@ function buildOwnedOtherDob(item: WalletSpore, clusterId: string, sporeId: strin
     id: sporeId,
     kind: 'other-dob',
     name: `DOB ${shortenHex(sporeId)}`,
-    previewSrc: DEFAULT_OTHER_SPORE_PREVIEW,
+    previewSrc: null,
     releaseCkb: formatReleaseCkbAmount(item.cell.cellOutput.capacity.toString()),
     sporeId,
     storedValue: null,
