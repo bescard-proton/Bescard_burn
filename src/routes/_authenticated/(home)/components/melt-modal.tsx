@@ -81,6 +81,14 @@ function pickAmountText(primary?: string | null, fallback?: string | null) {
   return primary?.trim() || fallback?.trim() || null
 }
 
+function shortenMiddle(value: string, head = 12, tail = 8) {
+  if (!value || value.length <= head + tail) {
+    return value
+  }
+
+  return `${value.slice(0, head)}...${value.slice(-tail)}`
+}
+
 export function MeltModal({
   dob,
   onCompleted,
@@ -282,7 +290,7 @@ export function MeltModal({
                   ) : null }
 
                   <div className="mintpad-copy-item mintpad-copy-stored-value-row">
-                    <span className="mintpad-copy-event-name">{ dob.id }</span>
+                    <span className="mintpad-copy-event-name" title={ dob.id }>{ shortenMiddle(dob.id) }</span>
                   </div>
                 </div>
               </div>
