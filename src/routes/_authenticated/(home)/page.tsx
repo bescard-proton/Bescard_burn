@@ -38,6 +38,9 @@ export function HomePage() {
   const [progress, setProgress] = useState<BescardScanProgress>(EMPTY_PROGRESS)
   const [queryError, setQueryError] = useState<string | null>(null)
   const [selectedSpore, setSelectedSpore] = useState<MeltableHomeSpore | null>(null)
+  const hasQueryProgress = isQuerying || progress.scanned > 0
+  const bescardCount = hasQueryProgress ? progress.bescards : null
+  const otherDobCount = hasQueryProgress ? Math.max(0, progress.dobs - progress.bescards) : null
 
   const emptyStateMessage = isQuerying
     ? 'Querying on-chain BesCARDs...'
@@ -156,16 +159,18 @@ export function HomePage() {
         >
           <>
             <HomeBescardResultsPanel
+              count={bescardCount}
               emptyStateMessage={emptyStateMessage}
               items={ownedBescards}
               onMelt={(item) => {
                 handleOpenMelt(item)
               }}
             />
-            {ownedOtherDobs.length > 0 ? (
+            {ownedOtherDobs.length > 0 || otherDobCount != null ? (
               <>
                 <Divider/>
                 <HomeOtherDobResultsPanel
+                  count={otherDobCount}
                   items={ownedOtherDobs}
                   onMelt={(item) => {
                     handleOpenMelt(item)

@@ -164,33 +164,38 @@ function OtherDobGroupCard({
 }
 
 export function HomeOtherDobResultsPanel({
+  count,
   items,
   onMelt,
 }: {
+  count?: number | null
   items: OwnedOtherDob[]
   onMelt: (item: OwnedOtherDob) => void
 }) {
   const groups = buildOtherDobGroups(items)
+  const title = count == null ? 'Other DOB' : `Other DOB (${count})`
 
-  if (groups.length === 0) {
+  if (groups.length === 0 && count == null) {
     return null
   }
 
   return (
     <section className={styles.sectionBlock}>
       <div className={styles.sectionHeader}>
-        <h2 className={styles.sectionTitle}>Other DOB</h2>
+        <h2 className={styles.sectionTitle}>{title}</h2>
       </div>
 
-      <div className={styles.projectCardList}>
-        {groups.map((group) => (
-          <OtherDobGroupCard
-            key={group.key}
-            group={group}
-            onMelt={onMelt}
-          />
-        ))}
-      </div>
+      {groups.length > 0 ? (
+        <div className={styles.projectCardList}>
+          {groups.map((group) => (
+            <OtherDobGroupCard
+              key={group.key}
+              group={group}
+              onMelt={onMelt}
+            />
+          ))}
+        </div>
+      ) : null}
     </section>
   )
 }

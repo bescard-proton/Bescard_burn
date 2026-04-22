@@ -40,20 +40,23 @@ function buildBescardGroups(items: OwnedBescard[]) {
 }
 
 export function HomeBescardResultsPanel({
+  count,
   emptyStateMessage,
   items,
   onMelt,
 }: {
+  count?: number | null
   emptyStateMessage: string
   items: OwnedBescard[]
   onMelt: (item: OwnedBescard) => void
 }) {
   const groups = useMemo(() => buildBescardGroups(items), [items])
+  const title = count == null ? 'My BesCARD' : `My BesCARD (${count})`
 
   return (
     <section className={styles.sectionBlock}>
       <div className={styles.sectionHeader}>
-        <h1 className={styles.sectionTitle}>My BesCARD</h1>
+        <h1 className={styles.sectionTitle}>{title}</h1>
       </div>
 
       {groups.length > 0 ? (
