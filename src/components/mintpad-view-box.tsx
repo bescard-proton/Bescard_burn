@@ -140,7 +140,7 @@ const MintpadViewBox: FC<ViewBoxProps> = ({
       ref={setContainer}
       className={className}
       style={{
-        background: [...extraBackgrounds, `url("${bg}") no-repeat`].join(","),
+        background: [...extraBackgrounds, ...(bg ? [`url("${bg}") no-repeat`] : [])].join(","),
       }}
     >
       {children}
