@@ -122,7 +122,7 @@ export function MeltModal({
     const [ integer = value, decimal = '00' ] = value.split('.')
     return {
       integer,
-      decimal: decimal.padEnd(2, '0').slice(0, 2),
+      decimal: decimal ? decimal : '00',
     }
   }
 

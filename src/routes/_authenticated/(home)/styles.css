@@ -17,6 +17,55 @@
   padding: 0 !important;
 }
 
+.testnet-tool-modal .ant-modal-container {
+  background: #fff !important;
+}
+
+.testnet-tool-modal .ant-modal-content {
+  background: #fff !important;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.18) !important;
+}
+
+.testnet-tool-modal .ant-modal-header,
+.testnet-tool-modal .ant-modal-body {
+  background: #fff !important;
+}
+
+.testnet-tool-modal .ant-modal-close {
+  color: #1f1f1f !important;
+}
+
+.testnet-tool-action-button.ant-btn {
+  min-height: 44px;
+  border-radius: 999px;
+  border-color: #1f1f1f;
+  background: #1f1f1f;
+  color: #fff;
+  box-shadow: none;
+  font-weight: 600;
+}
+
+.testnet-tool-action-button.ant-btn:not(:disabled):not(.ant-btn-disabled):hover,
+.testnet-tool-action-button.ant-btn:not(:disabled):not(.ant-btn-disabled):focus {
+  border-color: #1f1f1f;
+  background: #1f1f1f;
+  color: #fff;
+}
+
+.testnet-tool-action-button.ant-btn.ant-btn-loading,
+.testnet-tool-action-button.ant-btn:disabled,
+.testnet-tool-action-button.ant-btn.ant-btn-disabled {
+  border-color: #1f1f1f;
+  background: #1f1f1f;
+  color: #fff;
+  opacity: 0.88;
+}
+
+.testnet-tool-action-button.ant-btn .ant-btn-loading-icon,
+.testnet-tool-action-button.ant-btn .ant-btn-loading-icon .anticon {
+  color: #fff;
+}
+
 .spore-preview-fallback {
   width: 100%;
   height: 100%;
@@ -482,354 +531,7 @@
   font-size: 18px;
 }
 
-.mintpad-testnet-tool-panel {
-  position: relative;
-  display: grid;
-  gap: 16px;
-  padding: 24px 24px 28px;
-  overflow: hidden;
-  border: 8px solid #1a1a1a;
-  border-radius: 24px;
-  background:
-    radial-gradient(circle at top right, rgba(255, 219, 17, 0.28), transparent 24%),
-    linear-gradient(180deg, #fffdf4 0%, #fff8dc 100%);
-  box-shadow: none;
-}
-
-.mintpad-testnet-tool-panel--modal {
-  margin: 0;
-}
-
-.mintpad-testnet-float.ant-float-btn {
-  right: 24px;
-  bottom: 24px;
-}
-
-.mintpad-testnet-float.ant-float-btn .ant-float-btn-body {
-  border: 4px solid #1a1a1a;
-  border-radius: 18px;
-  background: #1a1a1a;
-  box-shadow: none;
-}
-
-.mintpad-testnet-float.ant-float-btn .ant-float-btn-content {
-  color: #ffdb11;
-}
-
-.mintpad-testnet-float-mark {
-  font-family: var(--font-display);
-  font-size: 1.1rem;
-  line-height: 1;
-}
-
-.mintpad-testnet-modal .ant-modal-content {
-  padding: 20px;
-  background: transparent;
-  box-shadow: none;
-}
-
-.mintpad-testnet-modal .ant-modal-close {
-  color: #1a1a1a;
-}
-
-.mintpad-testnet-tool-panel::before {
-  display: none;
-}
-
-.mintpad-testnet-tool-panel::after {
-  content: '';
-  position: absolute;
-  top: -5rem;
-  right: -4rem;
-  width: 14rem;
-  height: 14rem;
-  border-radius: 999px;
-  background: radial-gradient(circle, rgba(255, 219, 17, 0.2), transparent 68%);
-  pointer-events: none;
-}
-
-.mintpad-testnet-tool-head {
-  position: relative;
-  z-index: 1;
-  display: grid;
-  gap: 10px;
-}
-
-.mintpad-testnet-tool-chip-row {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-}
-
-.mintpad-testnet-tool-chip {
-  display: inline-flex;
-  align-items: center;
-  min-height: 32px;
-  padding: 0 12px;
-  border: 2px solid #1a1a1a;
-  border-radius: 999px;
-  background: #ffdb11;
-  color: #1a1a1a;
-  font-family: var(--font-display);
-  font-size: 0.86rem;
-  line-height: 1;
-}
-
-.mintpad-testnet-tool-chip--soft {
-  background: #fff;
-}
-
-.mintpad-testnet-tool-title {
-  color: #1a1a1a;
-  font-size: clamp(2rem, 5vw, 2.6rem);
-}
-
-.mintpad-testnet-tool-description {
-  margin: 0;
-  color: #4f4f4f;
-  font-size: 0.98rem;
-  line-height: 1.45;
-}
-
-.mintpad-testnet-action-grid {
-  position: relative;
-  z-index: 1;
-  display: grid;
-  gap: 14px;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-}
-
-.mintpad-testnet-action-card.ant-btn {
-  height: auto;
-  padding: 0;
-  border: 4px solid #1a1a1a;
-  border-radius: 24px;
-  color: #1a1a1a;
-  box-shadow: none;
-  transition:
-    transform 180ms ease,
-    background 180ms ease;
-}
-
-.mintpad-testnet-action-card.ant-btn::after {
-  display: none;
-}
-
-.mintpad-testnet-action-card.ant-btn > span {
-  width: 100%;
-}
-
-.mintpad-testnet-action-card.ant-btn.ant-btn-text:not(:disabled):not(.ant-btn-disabled):hover {
-  border-color: #1a1a1a;
-  background: inherit;
-  color: #1a1a1a;
-}
-
-.mintpad-testnet-action-card.ant-btn:not(:disabled):not(.ant-btn-disabled):hover {
-  transform: translateY(-3px);
-}
-
-.mintpad-testnet-action-card--ckb {
-  background: linear-gradient(180deg, #ffe777 0%, #ffd93a 100%);
-}
-
-.mintpad-testnet-action-card--usdi {
-  background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.88), rgba(255, 255, 255, 0.96)),
-    #fff;
-}
-
-.mintpad-testnet-action-body {
-  width: 100%;
-  display: grid;
-  align-items: center;
-  gap: 14px;
-  padding: 18px 20px;
-  grid-template-columns: auto minmax(0, 1fr) auto;
-  text-align: left;
-}
-
-.mintpad-testnet-action-mark {
-  min-width: 56px;
-  min-height: 56px;
-  display: grid;
-  place-items: center;
-  padding: 0 12px;
-  border: 3px solid #1a1a1a;
-  border-radius: 18px;
-  background: rgba(255, 255, 255, 0.72);
-  font-family: var(--font-display);
-  font-size: 1rem;
-  line-height: 1;
-}
-
-.mintpad-testnet-action-copy {
-  min-width: 0;
-}
-
-.mintpad-testnet-action-copy strong {
-  display: block;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  color: #1a1a1a;
-  font-size: 1.45rem;
-  line-height: 1.1;
-}
-
-.mintpad-testnet-action-value {
-  min-width: 92px;
-  color: #1a1a1a;
-  text-align: right;
-  font-family: var(--font-display);
-  font-size: 1.15rem;
-  line-height: 1;
-}
-
-.mintpad-testnet-status {
-  position: relative;
-  z-index: 1;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 14px 16px;
-  border: 3px solid #1a1a1a;
-  border-radius: 18px;
-  background: #fff;
-}
-
-.mintpad-testnet-status--success {
-  background: #fff4b8;
-}
-
-.mintpad-testnet-status--error {
-  background: #fff0f0;
-}
-
-.mintpad-testnet-status-dot {
-  width: 12px;
-  height: 12px;
-  flex: none;
-  border: 3px solid #1a1a1a;
-  border-radius: 999px;
-  background: #ffdb11;
-}
-
-.mintpad-testnet-status--success .mintpad-testnet-status-dot {
-  background: #1a1a1a;
-}
-
-.mintpad-testnet-status--error .mintpad-testnet-status-dot {
-  background: #ff5151;
-}
-
-.mintpad-testnet-status-text {
-  min-width: 0;
-  color: #1a1a1a;
-  font-size: 0.98rem;
-  line-height: 1.4;
-}
-
-.mintpad-testnet-result-shell {
-  position: relative;
-  z-index: 1;
-  display: grid;
-  gap: 12px;
-}
-
-.mintpad-testnet-result-head {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-  flex-wrap: wrap;
-}
-
-.mintpad-testnet-result-pill {
-  display: inline-flex;
-  align-items: center;
-  min-height: 36px;
-  padding: 0 14px;
-  border: 2px solid #1a1a1a;
-  border-radius: 999px;
-  background: #1a1a1a;
-  color: #fff;
-  font-family: var(--font-display);
-  white-space: nowrap;
-}
-
-.mintpad-testnet-result-list {
-  display: grid;
-  gap: 10px;
-  margin: 0;
-}
-
-.mintpad-testnet-result-row {
-  display: grid;
-  gap: 6px;
-  padding: 14px 16px;
-  border: 2px solid #1a1a1a;
-  border-radius: 16px;
-  background: rgba(255, 255, 255, 0.72);
-}
-
-.mintpad-testnet-result-row dt {
-  color: #8a8a8a;
-  font-size: 0.74rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-}
-
-.mintpad-testnet-result-row dd {
-  margin: 0;
-  color: #1a1a1a;
-  font-family: var(--font-mono);
-  font-size: 0.9rem;
-  line-height: 1.5;
-  word-break: break-all;
-}
-
-.mintpad-testnet-modal-action.ant-btn {
-  min-width: 136px;
-  height: 42px;
-  padding: 0 18px;
-  border: 3px solid #1a1a1a;
-  border-radius: 999px;
-  background: #1a1a1a;
-  color: #fff;
-  box-shadow: none;
-  font-weight: 700;
-}
-
-.mintpad-testnet-modal-action.ant-btn:not(:disabled):not(.ant-btn-disabled):hover {
-  border-color: #1a1a1a;
-  background: #1a1a1a;
-  color: #ffdb11;
-}
-
 @media (max-width: 720px) {
-  .mintpad-testnet-action-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .mintpad-testnet-action-body {
-    grid-template-columns: auto 1fr;
-  }
-
-  .mintpad-testnet-action-value {
-    grid-column: 2;
-    text-align: left;
-  }
-
-  .mintpad-testnet-result-head {
-    flex-direction: column;
-    align-items: stretch;
-  }
-
-  .mintpad-testnet-result-pill {
-    white-space: normal;
-  }
-
   .mintpad-rounded-close {
     width: 42px;
     height: 42px;

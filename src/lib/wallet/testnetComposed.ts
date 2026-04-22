@@ -6,7 +6,7 @@ import USDI from '@/constant/CKB/XUDT_Tokens/USDI'
 import { IS_TESTNET } from '@/constant/Network'
 
 export const TESTNET_CKB_LOCK_AMOUNT = 14_200_000_000n
-export const TESTNET_USDI_AMOUNT_PER_SPORE = 1n
+export const TESTNET_USDI_AMOUNT_PER_SPORE = 10n ** BigInt(USDI.decimals)
 export const TESTNET_CKB_LOCK_AMOUNT_LABEL = '142 CKB'
 export const TESTNET_USDI_AMOUNT_LABEL = '1 USDI'
 
@@ -63,7 +63,10 @@ async function createDobSpore(params: {
     signer,
     data: {
       contentType: 'text/plain;charset=utf-8',
-      content: ccc.bytesFrom(`bescard-${kind}-tool-${Date.now()}`, 'utf8'),
+      content: ccc.bytesFrom(
+        kind === 'ckb' ? 'BesCARD Burn Test DOB · CKB' : 'BesCARD Burn Test DOB · USDI',
+        'utf8',
+      ),
     },
   })
 

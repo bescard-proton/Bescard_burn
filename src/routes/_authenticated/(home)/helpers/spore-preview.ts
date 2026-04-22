@@ -28,7 +28,7 @@ export type SporeRenderData = {
 }
 
 const DOB_DECODE_CACHE_PREFIX = 'bescard:dob-decode:'
-const SPORE_RENDER_CACHE_PREFIX = 'bescard:spore-render:'
+const SPORE_RENDER_CACHE_PREFIX = 'bescard:spore-render:v2:'
 
 const decodeResultCache = new Map<
   string,
@@ -90,6 +90,96 @@ function bytesToBase64(bytes: Uint8Array) {
 
 function bytesToUtf8(bytesLike: ccc.BytesLike) {
   return new TextDecoder().decode(ccc.bytesFrom(bytesLike))
+}
+
+function escapeSvgText(value: string) {
+  return value
+    .replaceAll('&', '&amp;')
+    .replaceAll('<', '&lt;')
+    .replaceAll('>', '&gt;')
+    .replaceAll('"', '&quot;')
+    .replaceAll("'", '&#39;')
+}
+
+function wrapPlainText(value: string, maxCharsPerLine = 18, maxLines = 5) {
+  const normalized = value.replace(/\s+/g, ' ').trim()
+
+  if (!normalized) {
+    return []
+  }
+
+  const words = normalized.split(' ')
+  const lines: string[] = []
+  let current = ''
+
+  for (const word of words) {
+    if (word.length > maxCharsPerLine) {
+      if (current) {
+        lines.push(current)
+        current = ''
+      }
+
+      for (let index = 0; index < word.length; index += maxCharsPerLine) {
+        lines.push(word.slice(index, index + maxCharsPerLine))
+      }
+
+      continue
+    }
+
+    const next = current ? `${current} ${word}` : word
+
+    if (next.length > maxCharsPerLine) {
+      lines.push(current)
+      current = word
+      continue
+    }
+
+    current = next
+  }
+
+  if (current) {
+    lines.push(current)
+  }
+
+  if (lines.length <= maxLines) {
+    return lines
+  }
+
+  const trimmed = lines.slice(0, maxLines)
+  const lastLine = trimmed[maxLines - 1] || ''
+  trimmed[maxLines - 1] =
+    lastLine.length >= maxCharsPerLine ? `${lastLine.slice(0, maxCharsPerLine - 1)}…` : `${lastLine}…`
+  return trimmed
+}
+
+function resolvePreviewFromPlainText(content: ccc.BytesLike) {
+  const text = bytesToUtf8(content).trim()
+
+  if (!text) {
+    return null
+  }
+
+  const lines = wrapPlainText(text)
+
+  if (lines.length === 0) {
+    return null
+  }
+
+  const svg = `
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 480">
+      <rect width="360" height="480" rx="24" fill="#FFFFFF" />
+      <rect x="12" y="12" width="336" height="456" rx="18" fill="#FFFFFF" stroke="#1A1A1A" stroke-width="8" />
+      <text x="36" y="84" fill="#8C8C8C" font-family="Arial, sans-serif" font-size="18" font-weight="700">TEXT DOB</text>
+      ${lines
+        .map(
+          (line, index) =>
+            `<text x="36" y="${160 + index * 52}" fill="#1A1A1A" font-family="Arial, sans-serif" font-size="32" font-weight="700">${escapeSvgText(line)}</text>`,
+        )
+        .join('')}
+    </svg>
+  `
+
+  return `data:image/svg+xml;base64,${bytesToBase64(new TextEncoder().encode(svg))}`
 }
 
 function getParsedTraits(decoded: ParsedDobDecodeResult | null) {
@@ -242,10 +332,11 @@ function resolvePreviewFromContent(params: Pick<ResolvePreviewParams, 'content' 
     return `data:${params.contentType};base64,${bytesToBase64(bytes)}`
   }
 
-  if (
-    params.contentType.startsWith('text/') ||
-    params.contentType.startsWith('application/json')
-  ) {
+  if (params.contentType.startsWith('text/')) {
+    return resolvePreviewFromPlainText(params.content) ?? resolvePreviewFromJsonContent(params.content)
+  }
+
+  if (params.contentType.startsWith('application/json')) {
     return resolvePreviewFromJsonContent(params.content)
   }
 
@@ -253,10 +344,12 @@ function resolvePreviewFromContent(params: Pick<ResolvePreviewParams, 'content' 
 }
 
 function resolveDisplayNameFromContent(params: Pick<ResolvePreviewParams, 'content' | 'contentType'>) {
-  if (
-    params.contentType.startsWith('text/') ||
-    params.contentType.startsWith('application/json')
-  ) {
+  if (params.contentType.startsWith('text/')) {
+    const text = bytesToUtf8(params.content).trim()
+    return text || null
+  }
+
+  if (params.contentType.startsWith('application/json')) {
     return resolveDisplayNameFromJsonContent(params.content)
   }
 

@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-import { Button, FloatButton, Modal } from 'antd'
+import { Alert, Button, Card, Col, Descriptions, FloatButton, Modal, Row, Space, Tag, Typography } from 'antd'
 
 import { IS_TESTNET } from '@/constant/Network'
 import joyIdWallet from '@/lib/wallet/JoyIDWallet'
@@ -13,13 +13,23 @@ import {
 } from '@/lib/wallet/testnetComposed'
 import { formatWalletError } from '@/lib/wallet/utils'
 
-import '../styles.css'
-
-type StatusTone = 'default' | 'error' | 'success'
+type StatusTone = 'info' | 'error' | 'success'
 
 const KIND_LABEL: Record<TestnetComposedKind, string> = {
   ckb: 'CKB',
   usdi: 'USDI',
+}
+
+function ResultValue({ value }: { value: string }) {
+  return (
+    <Typography.Paragraph
+      copyable={{ text: value }}
+      ellipsis={{ rows: 1, tooltip: false }}
+      style={{ marginBottom: 0, color: '#1f1f1f' }}
+    >
+      {value}
+    </Typography.Paragraph>
+  )
 }
 
 export function TestnetCreateTool({
@@ -32,7 +42,7 @@ export function TestnetCreateTool({
   const [open, setOpen] = useState(false)
   const [runningKind, setRunningKind] = useState<TestnetComposedKind | null>(null)
   const [status, setStatus] = useState('Choose an asset type to mint a test sample.')
-  const [statusTone, setStatusTone] = useState<StatusTone>('default')
+  const [statusTone, setStatusTone] = useState<StatusTone>('info')
   const [result, setResult] = useState<CreatedTestnetComposedAsset | null>(null)
 
   if (!IS_TESTNET) {
@@ -55,8 +65,8 @@ export function TestnetCreateTool({
     setOpen(true)
     setRunningKind(kind)
     setResult(null)
-    setStatusTone('default')
-    setStatus('Connecting JoyID signer...')
+    setStatusTone('info')
+    setStatus('Connecting wallet...')
 
     try {
       if (!(await joyIdWallet.isConnected())) {
@@ -85,124 +95,136 @@ export function TestnetCreateTool({
   return (
     <>
       <FloatButton
-        className="mintpad-testnet-float"
-        icon={<span className="mintpad-testnet-float-mark">T</span>}
-        tooltip="Testnet lab"
+        icon="T"
         onClick={() => {
           setOpen(true)
         }}
       />
 
       <Modal
+        className="testnet-tool-modal"
         centered
-        className="mintpad-testnet-modal"
         closable={ !runningKind }
         footer={ null }
         open={ open }
-        width={ 760 }
+        styles={{
+          body: { background: '#fff', paddingTop: 20 },
+          header: { background: '#fff', marginBottom: 0, paddingBottom: 0 },
+        }}
+        title={<Typography.Title level={4} style={{ margin: 0, color: '#1f1f1f' }}>Create Test Asset</Typography.Title>}
+        width={ 680 }
         onCancel={ handleClose }
       >
-        <section className="mintpad-testnet-tool-panel mintpad-testnet-tool-panel--modal">
-          <div className="mintpad-testnet-tool-head">
-            <div className="mintpad-testnet-tool-chip-row">
-              <span className="mintpad-testnet-tool-chip">Testnet Tool</span>
-              <span className="mintpad-testnet-tool-chip mintpad-testnet-tool-chip--soft">JoyID</span>
-            </div>
-            <strong className="panel-title mintpad-testnet-tool-title">Create Test Asset</strong>
-            <p className="panel-copy mintpad-testnet-tool-description">
-              Mint a CKB or USDI sample for query and melt checks.
-            </p>
-          </div>
+        <Space direction="vertical" size="large" style={{ width: '100%' }}>
+          <Typography.Paragraph style={{ marginBottom: 0, color: '#595959' }}>
+            Mint a CKB or USDI sample for query and melt checks.
+          </Typography.Paragraph>
 
-          <div className="mintpad-testnet-action-grid">
-            <Button
-              block
-              className="mintpad-testnet-action-card mintpad-testnet-action-card--ckb"
-              disabled={ Boolean(runningKind) }
-              loading={ runningKind === 'ckb' }
-              type="text"
-              onClick={() => {
-                void handleCreate('ckb')
-              }}
-            >
-              <span className="mintpad-testnet-action-body">
-                <span className="mintpad-testnet-action-mark">CKB</span>
-                <span className="mintpad-testnet-action-copy">
-                  <strong>Create CKB asset</strong>
-                </span>
-                <span className="mintpad-testnet-action-value">{TESTNET_CKB_LOCK_AMOUNT_LABEL}</span>
-              </span>
-            </Button>
+          <Row gutter={[16, 16]}>
+            <Col span={12} xs={24} sm={12}>
+              <Card
+                style={{ background: '#fff', borderColor: '#d9d9d9', boxShadow: 'none' }}
+                styles={{ body: { background: '#fff' }, header: { background: '#fff' } }}
+                size="small"
+                title={<Typography.Text strong style={{ color: '#1f1f1f' }}>CKB Sample</Typography.Text>}
+                extra={<Tag bordered={false}>{TESTNET_CKB_LOCK_AMOUNT_LABEL}</Tag>}
+              >
+                <Space direction="vertical" size="middle" style={{ width: '100%' }}>
+                  <Typography.Text style={{ color: '#595959' }}>
+                    Creates a text DOB and locks CKB into TypeBurnLock.
+                  </Typography.Text>
+                  <Button
+                    block
+                    className="testnet-tool-action-button"
+                    disabled={Boolean(runningKind)}
+                    loading={runningKind === 'ckb'}
+                    type="default"
+                    onClick={() => {
+                      void handleCreate('ckb')
+                    }}
+                  >
+                    Create CKB Sample
+                  </Button>
+                </Space>
+              </Card>
+            </Col>
 
-            <Button
-              block
-              className="mintpad-testnet-action-card mintpad-testnet-action-card--usdi"
-              disabled={ Boolean(runningKind) }
-              loading={ runningKind === 'usdi' }
-              type="text"
-              onClick={() => {
-                void handleCreate('usdi')
-              }}
-            >
-              <span className="mintpad-testnet-action-body">
-                <span className="mintpad-testnet-action-mark">USDI</span>
-                <span className="mintpad-testnet-action-copy">
-                  <strong>Create USDI asset</strong>
-                </span>
-                <span className="mintpad-testnet-action-value">{TESTNET_USDI_AMOUNT_LABEL}</span>
-              </span>
-            </Button>
-          </div>
+            <Col span={12} xs={24} sm={12}>
+              <Card
+                style={{ background: '#fff', borderColor: '#d9d9d9', boxShadow: 'none' }}
+                styles={{ body: { background: '#fff' }, header: { background: '#fff' } }}
+                size="small"
+                title={<Typography.Text strong style={{ color: '#1f1f1f' }}>USDI Sample</Typography.Text>}
+                extra={<Tag bordered={false}>{TESTNET_USDI_AMOUNT_LABEL}</Tag>}
+              >
+                <Space direction="vertical" size="middle" style={{ width: '100%' }}>
+                  <Typography.Text style={{ color: '#595959' }}>
+                    Creates a text DOB and locks USDI into TypeBurnLock.
+                  </Typography.Text>
+                  <Button
+                    block
+                    className="testnet-tool-action-button"
+                    disabled={Boolean(runningKind)}
+                    loading={runningKind === 'usdi'}
+                    type="default"
+                    onClick={() => {
+                      void handleCreate('usdi')
+                    }}
+                  >
+                    Create USDI Sample
+                  </Button>
+                </Space>
+              </Card>
+            </Col>
+          </Row>
 
-          <div
-            className={[
-              'mintpad-testnet-status',
-              statusTone === 'error' ? 'mintpad-testnet-status--error' : '',
-              statusTone === 'success' ? 'mintpad-testnet-status--success' : '',
-            ]
-              .filter(Boolean)
-              .join(' ')}
-          >
-            <span className="mintpad-testnet-status-dot" aria-hidden="true" />
-            <strong className="mintpad-testnet-status-text">{status}</strong>
-          </div>
+          <Alert
+            message={<span style={{ color: '#1f1f1f' }}>{status}</span>}
+            showIcon
+            style={{ background: '#fafafa', border: '1px solid #d9d9d9' }}
+            type={statusTone}
+          />
 
           {result ? (
-            <section className="mintpad-testnet-result-shell">
-              <div className="mintpad-testnet-result-head">
-                <span className="mintpad-testnet-result-pill">
-                  {KIND_LABEL[result.kind]} · {result.assetLabel}
-                </span>
-
+            <Card
+              style={{ background: '#fff', borderColor: '#d9d9d9', boxShadow: 'none' }}
+              styles={{ body: { background: '#fff' }, header: { background: '#fff' } }}
+              extra={
                 <Button
-                  className="mintpad-testnet-modal-action"
                   disabled={ Boolean(runningKind) || isQuerying }
-                  shape="round"
-                  size="large"
-                  type="default"
+                  type="primary"
                   onClick={ onQuery }
                 >
                   Query Wallet
                 </Button>
-              </div>
-
-              <dl className="mintpad-testnet-result-list">
-                <div className="mintpad-testnet-result-row">
-                  <dt>Spore ID</dt>
-                  <dd>{result.sporeId}</dd>
-                </div>
-                <div className="mintpad-testnet-result-row">
-                  <dt>Spore Tx</dt>
-                  <dd>{result.sporeTxHash}</dd>
-                </div>
-                <div className="mintpad-testnet-result-row">
-                  <dt>Lock Tx</dt>
-                  <dd>{result.lockTxHash}#{result.lockIndex}</dd>
-                </div>
-              </dl>
-            </section>
+              }
+              size="small"
+              title={
+                <Space size="small">
+                  <Typography.Text strong style={{ color: '#1f1f1f' }}>Created Sample</Typography.Text>
+                  <Tag bordered={false}>{KIND_LABEL[result.kind]}</Tag>
+                  <Tag bordered={false}>{result.assetLabel}</Tag>
+                </Space>
+              }
+            >
+              <Descriptions
+                column={1}
+                labelStyle={{ color: '#8c8c8c' }}
+                size="small"
+              >
+                <Descriptions.Item label="Spore ID">
+                  <ResultValue value={result.sporeId} />
+                </Descriptions.Item>
+                <Descriptions.Item label="Spore Tx">
+                  <ResultValue value={result.sporeTxHash} />
+                </Descriptions.Item>
+                <Descriptions.Item label="Lock Tx">
+                  <ResultValue value={`${result.lockTxHash}#${result.lockIndex}`} />
+                </Descriptions.Item>
+              </Descriptions>
+            </Card>
           ) : null}
-        </section>
+        </Space>
       </Modal>
     </>
   )
