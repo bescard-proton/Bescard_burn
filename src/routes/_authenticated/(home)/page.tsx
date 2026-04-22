@@ -33,19 +33,20 @@ type MeltableHomeSpore = OwnedBescard | OwnedOtherDob
 export function HomePage() {
   const navigate = useNavigate()
   const [isQuerying, setIsQuerying] = useState(false)
+  const [hasQueried, setHasQueried] = useState(false)
   const [ownedBescards, setOwnedBescards] = useState<OwnedBescard[]>([])
   const [ownedOtherDobs, setOwnedOtherDobs] = useState<OwnedOtherDob[]>([])
   const [progress, setProgress] = useState<BescardScanProgress>(EMPTY_PROGRESS)
   const [queryError, setQueryError] = useState<string | null>(null)
   const [selectedSpore, setSelectedSpore] = useState<MeltableHomeSpore | null>(null)
-  const hasQueryProgress = isQuerying || progress.scanned > 0
+  const hasQueryProgress = isQuerying || hasQueried
   const bescardCount = hasQueryProgress ? progress.bescards : null
   const otherDobCount = hasQueryProgress ? Math.max(0, progress.dobs - progress.bescards) : null
 
   const emptyStateMessage = isQuerying
     ? 'Querying on-chain BesCARDs...'
-    : progress.scanned > 0
-      ? 'Query complete, but no BesCARDs were found.'
+    : hasQueried
+      ? 'Query complete, but no displayable BesCARDs were found.'
       : 'Click "Query My BesCARD" to query the connected wallet.'
 
   const handleQuery = useCallback(async () => {
@@ -54,6 +55,7 @@ export function HomePage() {
     }
 
     setIsQuerying(true)
+    setHasQueried(true)
     setQueryError(null)
     setProgress(EMPTY_PROGRESS)
     startTransition(() => {
@@ -166,7 +168,7 @@ export function HomePage() {
                 handleOpenMelt(item)
               }}
             />
-            {ownedOtherDobs.length > 0 || otherDobCount != null ? (
+            {ownedOtherDobs.length > 0 || (otherDobCount != null && otherDobCount > 0) ? (
               <>
                 <Divider/>
                 <HomeOtherDobResultsPanel
