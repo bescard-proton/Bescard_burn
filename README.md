@@ -11,6 +11,12 @@ The app supports two public network targets:
 - `mainnet`: the default GitHub Pages entry
 - `testnet`: the Pages `testnet/` subpath build
 
+## Disclaimer
+
+This tool is an auxiliary tool for asset operations after the BesCARD platform goes offline. All asset operations are confirmed and executed by users themselves. The development team assumes no responsibility for any asset loss or private key leakage caused by operational errors, network issues, environmental problems, third-party risks, or similar factors.
+
+Users bear all on-chain operational risks on their own.
+
 ## What It Does
 
 - Connects a JoyID wallet

@@ -137,11 +137,30 @@
 }
 
 .resultsPanel {
-  --results-panel-inline-padding: 24px;
   margin-top: 28px;
   border-radius: 32px;
   background: transparent;
-  padding: 0 var(--results-panel-inline-padding) 32px;
+  padding: 0 0 32px;
+}
+
+.disclaimerBlock {
+  margin-top: 20px;
+}
+
+.disclaimerTitle {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 900;
+  line-height: 1.1;
+  color: #1a1a1a;
+}
+
+.disclaimerText {
+  margin: 12px 0 0;
+  max-width: 1120px;
+  color: rgba(26, 26, 26, 0.75);
+  font-size: 14px;
+  line-height: 22px;
 }
 
 .sectionBlock + .sectionBlock {
@@ -230,8 +249,7 @@
   }
 
   .resultsPanel {
-    --results-panel-inline-padding: 16px;
-    padding: 0 var(--results-panel-inline-padding) 28px;
+    padding: 0 0 28px;
   }
 }
 
